@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particulares - Banco Santander (Réplica Educativa)</title>
+    <meta name="description" content="Réplica educativa de la página de particulares. Encuentra información sobre cuentas, tarjetas, préstamos e hipotecas.">
+    
+    <style>
+        /* --- VARIABLES Y RESET BÁSICO --- */
+        :root {
+            --santander-red: #ec0000;
+            --santander-dark: #333333;
+            --santander-gray: #f2f2f2;
+            --text-color: #444444;
+            --white: #ffffff;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--santander-red);
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--santander-red);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--santander-dark);
+            font-weight: 500;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--santander-gray);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--santander-dark);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--santander-red);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c00000;
+            text-decoration: none;
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--santander-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* --- GRID DE NECESIDADES --- */
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .need-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .need-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .need-card h3 {
+            color: var(--santander-red);
+            margin-bottom: 10px;
+        }
+
+        /* --- PRODUCTOS DESTACADOS --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            border-left: 4px solid var(--santander-red);
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        .product-card h3 {
+            color: var(--santander-dark);
+            margin-bottom: 10px;
+        }
+
+        /* --- SIMULADOR --- */
+        .simulator {
+            background-color: var(--santander-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .simulator h2 {
+            color: var(--white);
+        }
+
+        .simulator .btn {
+            background-color: var(--white);
+            color: var(--santander-dark);
+        }
+
+        .simulator .btn:hover {
+            background-color: #ddd;
+        }
+
+        /* --- AYUDA --- */
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .help-item h3 {
+            color: var(--santander-red);
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #f8f8f8;
+            padding: 40px 0;
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-legal {
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Banco Santander</div>
+            <nav>
+                <ul>
+                    <li><a href="#cuentas">Cuentas</a></li>
+                    <li><a href="#tarjetas">Tarjetas</a></li>
+                    <li><a href="#hipotecas">Hipotecas</a></li>
+                    <li><a href="#prestamos">Préstamos</a></li>
+                    <li><a href="#ayuda">Ayuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HÉROE / PROMOCIÓN PRINCIPAL -->
+        <section class="hero">
+            <div class="container">
+                <h1>Ven al Santander y disfruta el iPhone 18 Pro desde 0€/mes*</h1>
+                <p>Renting a 36 meses, cumpliendo condiciones.</p>
+                <a href="#" class="btn">Saber más</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE NECESIDADES -->
+        <section id="necesidades">
+            <div class="container">
+                <h2 class="section-title">Cuéntanos, ¿qué necesitas?</h2>
+                <div class="needs-grid">
+                    <div class="need-card">
+                        <h3>Una cuenta</h3>
+                        <p>Abre tu cuenta online sin comisiones.</p>
+                    </div>
+                    <div class="need-card">
+                        <h3>Una tarjeta</h3>
+                        <p>Descubre nuestras tarjetas de crédito y débito.</p>
+                    </div>
+                    <div class="need-card">
+                        <h3>Simular mi hipoteca</h3>
+                        <p>Calcula la cuota mensual de tu futura vivienda.</p>
+                    </div>
+                    <div class="need-card">
+                        <h3>Un préstamo o renting</h3>
+                        <p>Financiación flexible para tus proyectos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTOS DESTACADOS -->
+        <section id="productos" style="background-color: #fafafa;">
+            <div class="container">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <div class="products-grid">
+                    <article class="product-card">
+                        <h3>Hipotecas Santander</h3>
+                        <p>Te acompañamos durante todo el proceso, ofreciéndote atención personalizada y las mejores condiciones del mercado.</p>
+                        <br>
+                        <a href="#">Ver condiciones</a>
+                    </article>
+                    <article class="product-card">
+                        <h3>Re estrena con Renting</h3>
+                        <p>Coches de renting anteriores, con entrega rápida. Consulta condiciones, sujeto a previa aprobación del banco.</p>
+                        <br>
+                        <a href="#">Descubrir ofertas</a>
+                    </article>
+                    <article class="product-card">
+                        <h3>Tarjeta Crédito Santander</h3>
+                        <p>Te devuelve el 1% de tus compras durante 1 año (hasta 10€ netos/mes). Válido hasta 31/01/2027.</p>
+                        <br>
+                        <a href="#">Solicitar ahora</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULADOR -->
+        <section class="simulator">
+            <div class="container">
+                <h2>Simula tu hipoteca</h2>
+                <p style="margin: 20px 0;">Ya sea tu vivienda principal o segunda residencia, nueva o usada. Calcula tu cuota mensual en segundos.</p>
+                <a href="#" class="btn">Calcular tu cuota</a>
+            </div>
+        </section>
+
+        <!-- CONTENIDO DE VALOR / BLOG -->
+        <section id="blog">
+            <div class="container">
+                <h2 class="section-title">Claves para gestionar tu dinero</h2>
+                <div class="products-grid">
+                    <div>
+                        <h3>Claves para comprar tu casa</h3>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li><a href="#">¿Qué diferencia hay entre una hipoteca fija y variable?</a></li>
+                            <li><a href="#">5 consejos para elegir una hipoteca</a></li>
+                            <li><a href="#">¿Cuáles son los gastos asociados a una hipoteca?</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Claves para el ahorro</h3>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li><a href="#">¿Qué es la Inversión Sostenible y Responsable (ISR)?</a></li>
+                            <li><a href="#">¿Cómo puedo calcular la pensión de jubilación?</a></li>
+                            <li><a href="#">Guía para saber cómo invertir en bolsa</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AYUDA Y CONTACTO -->
+        <section id="ayuda" style="background-color: #fafafa;">
+            <div class="container">
+                <h2 class="section-title">¿Necesitas ayuda?</h2>
+                <div class="help-grid">
+                    <div class="help-item">
+                        <h3>Oficinas y cajeros</h3>
+                        <p>Cuenta con más de 1.827 oficinas y más de 4.700 cajeros automáticos distribuidos por todo el territorio nacional.</p>
+                        <a href="#">Buscar</a>
+                    </div>
+                    <div class="help-item">
+                        <h3>Centro de ayuda</h3>
+                        <p>Si tienes una duda, consulta o incidencia, ponemos a tu disposición diferentes canales para hacerlo.</p>
+                        <a href="#">Ir al centro de ayuda</a>
+                    </div>
+                    <div class="help-item">
+                        <h3>Cita previa en tu oficina</h3>
+                        <p>Sin colas, elige el día y hora para ir a tu oficina y hablar con un gestor.</p>
+                        <a href="#">Pedir cita</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="container">
+            <div class="footer-legal">
+                <p><strong>Aviso legal:</strong> Esta es una réplica educativa generada con fines de aprendizaje de desarrollo web. No es el sitio web oficial del Banco Santander. No se recopilan datos ni se realizan transacciones reales.</p>
+                <br>
+                <p>* Incentivo consistente en un cupón por importe de 75€, una vez aplicada la retención fiscal vigente. Promoción válida para clientes personas físicas residentes en España, de entre 18 y 29 años, que se adhieran a la campaña y mantengan Bizum activo durante 12 meses. Consulta bases legales.</p>
+                <p>1. Renting ofrecido por Banco Santander. Operaciones de renting y concesión de tarjeta de crédito sujetas a previa aprobación por parte del banco.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Santander Open Academy</a>
+                <a href="#">Santander Experiences</a>
+                <a href="#">Work Café</a>
+                <a href="#">Apps Santander</a>
+                <a href="#">Oficinas Smart Red</a>
+                <a href="#">Sostenibilidad Santander</a>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política de Privacidad</a>
+            </div>
+            
+            <p style="margin-top: 30px; text-align: center;">&copy; 2026 Réplica Educativa. Todos los derechos del contenido original pertenecen a Banco Santander S.A.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
